@@ -7,10 +7,14 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
+    "moment": "^2.26.0",
+    "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-moment": "^0.9.7",
     "react-scripts": "3.4.1",
-    "react-spinkit": "^3.0.0"
+    "react-spinkit": "^3.0.0",
+    "react-spinners": "^0.8.3"
   },
   "scripts": {
     "start": "react-scripts start",

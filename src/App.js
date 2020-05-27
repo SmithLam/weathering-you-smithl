@@ -2,7 +2,17 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import 'react-spinkit'
+import { css } from "@emotion/core";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import Moment from 'react-moment';
+import 'moment-timezone';
 
+const override = css`
+  display: block;
+  margin: 10% auto;
+`;
+
+let API_KEY = process.env.REACT_APP_APIKEY
 
 export default class App extends Component {
 
@@ -10,36 +20,37 @@ export default class App extends Component {
     super(props);
     this.state ={
       weatherResult:null,
-      iconURL:""
+      iconURL:"",
+      unixTime:""
     }
   }
 
-  // let Spinner
 
   getCurrentWeather = async(lon,lat) =>{
-    let API_KEY = process.env.REACT_APP_APIKEY
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
     let data = await fetch(url)
     let result = await data.json()
     console.log("what is the result? ", result)
-    let iconCode = result.weather[0].icon
+    let iconCode = result.list[0].weather[0].icon
     let iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    let unixTime= result.list[0].dt
     console.log("What is icon code ", iconCode)
-
     this.setState({weatherResult:result})
     this.setState({iconURL:iconURL})
+    this.setState({unixTime:unixTime})
   }
 
   getCityWeather = async(city) =>{
-    let API_KEY = process.env.REACT_APP_APIKEY
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
     let data = await fetch(url)
     let result = await data.json()
-    let iconCode = result.weather[0].icon
+    let iconCode = result.list[0].weather[0].icon
     let iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    let unixTime= result.list[0].dt
     console.log("what is the city result? ", result)
     this.setState({weatherResult:result})
     this.setState({iconURL:iconURL})
+    this.setState({unixTime:unixTime})
   }
 
 
@@ -64,15 +75,25 @@ export default class App extends Component {
   render() {
 
     if(this.state.weatherResult == null){
-      return (<div>Loading</div>)
+      return ( <div className="sweet-loading">
+      <PacmanLoader
+        css={override}
+        size={125}
+        color={"yellow"}
+        loading={this.state.loading}
+      />
+    </div>)
     }
 
     return (
+      
       <div>
+        
         <h1>Weathering You!</h1>
-        <h2>{this.state.weatherResult.name}</h2>
-        <h3>{this.state.weatherResult.main.temp}°C <img src={this.state.iconURL}></img></h3>
-        <h3>{this.state.weatherResult.weather[0].description}</h3>
+        <p className="time"><Moment unix tz="Asia/Ho_Chi_Minh">{this.state.unixTime}</Moment></p>
+        <p className="city">{this.state.weatherResult.city.name}</p>
+        <p className="temp">{this.state.weatherResult.list[0].main.temp}°C <img alt ={this.state.weatherResult.list[0].weather[0].description} src={this.state.iconURL}></img></p>
+        <p className="weather">{this.state.weatherResult.list[0].weather[0].description}</p>
         <button class="btn-primary btn-lg" onClick={()=>this.getCityWeather("Paris")}>Paris, France</button>
         <button class="btn-primary btn-lg" onClick={()=>this.getCityWeather("Berlin")}>Berlin, Germany</button>
         <button class="btn-primary btn-lg" onClick={()=>this.getCityWeather("Tokyo")}>Tokyo, Japan</button>
