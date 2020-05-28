@@ -113,7 +113,7 @@ export default class App extends Component {
       </Navbar.Collapse>
         </Navbar>
 
-        <div className="render">
+        <div className={`render ${this.state.weatherResult.city.name}`}>
        <Row className="display-flex justify-content-center">
       <Col xs={12} md={4}>
       <div className="day one">

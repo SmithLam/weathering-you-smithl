@@ -18,6 +18,46 @@ body{
   align-items: center;
 }
 
+.Paris{
+  background-image: url(https://i.imgur.com/t472a70.jpg)!important;
+  background-size: cover;
+}
+
+.Berlin{
+  background-image: url(https://imgur.com/uPtAAyT.jpg)!important;
+  background-size: cover;
+}
+
+.Tokyo{
+  background-image: url(https://imgur.com/c31kO4w.jpg)!important;
+  background-size: cover;
+}
+
+.Rome{
+  background-image: url(https://imgur.com/37mD9AJ.jpg)!important;
+  background-size: cover;
+}
+
+.London{
+  background-image: url(https://imgur.com/WAbNC4X.jpg)!important;
+  background-size: cover;
+}
+
+.Sydney{
+  background-image: url(https://imgur.com/otdA4bd.jpg)!important;
+  background-size: cover;
+}
+
+.Bangkok{
+  background-image: url(https://imgur.com/kaYJ0bL.jpg)!important;
+  background-size: cover;
+}
+
+.Shanghai{
+  background-image: url(https://i.imgur.com/ZUCgEX4.jpg)!important;
+  background-size: cover;
+}
+
 .day{
   max-width: 100%;
   padding: 5%;
