@@ -21,26 +21,31 @@ body{
 .Paris{
   background-image: url(https://i.imgur.com/t472a70.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .Berlin{
   background-image: url(https://imgur.com/uPtAAyT.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .Tokyo{
   background-image: url(https://imgur.com/c31kO4w.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .Rome{
   background-image: url(https://imgur.com/37mD9AJ.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .London{
   background-image: url(https://imgur.com/WAbNC4X.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .Sydney{
@@ -51,11 +56,13 @@ body{
 .Bangkok{
   background-image: url(https://imgur.com/kaYJ0bL.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .Shanghai{
   background-image: url(https://i.imgur.com/ZUCgEX4.jpg)!important;
   background-size: cover;
+  transition:1s;
 }
 
 .day{
