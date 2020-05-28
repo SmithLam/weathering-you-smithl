@@ -24,34 +24,33 @@ export default class App extends Component {
     super(props);
     this.state ={
       weatherResult:null,
-      iconURL:"",
     }
   }
 
 
   getCurrentWeather = async(lon,lat) =>{
-    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-    let data = await fetch(url)
-    let result = await data.json()
-    console.log("what is the result? ", result)
-    let iconCode = result.list[0].weather[0].icon
-    let iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
-    console.log("What is icon code ", iconCode)
-    this.setState({weatherResult:result})
-    this.setState({iconURL:iconURL})
+    try{
+      let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      let data = await fetch(url)
+      if (data.status !== 200){throw new Error("data is wrong")}
+      let result = await data.json()
+      console.log("what is the result? ", result)
+      this.setState({weatherResult:result})
+    } catch (err) {
+      alert(err.message)
+    }
   }
 
   getCityWeather = async(city) =>{
-    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
-    let data = await fetch(url)
-    let result = await data.json()
-    let iconCode = result.list[0].weather[0].icon
-    let iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
-    let unixTime= result.list[0].dt
-    console.log("what is the city result? ", result)
-    this.setState({weatherResult:result})
-    this.setState({iconURL:iconURL})
-    this.setState({unixTime:unixTime})
+    try{
+      let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+      let data = await fetch(url)
+      let result = await data.json()
+      console.log("what is the city result? ", result)
+      this.setState({weatherResult:result})
+    } catch (err) {
+      alert(err.message)
+    }
   }
 
 
@@ -119,7 +118,7 @@ export default class App extends Component {
       <div className="day one">
         <p className="time">Today: <Moment format="D MMM YYYY" withTitle>{this.state.weatherResult.list[0].dt_txt}</Moment></p>
         <p className="city">{this.state.weatherResult.city.name}</p>
-        <p className="temp">{this.state.weatherResult.list[0].main.temp}°C <img alt ={this.state.weatherResult.list[0].weather[0].description} src={this.state.iconURL}></img></p>
+        <p className="temp">{this.state.weatherResult.list[0].main.temp}°C <img alt ={this.state.weatherResult.list[0].weather[0].description} src={`http://openweathermap.org/img/w/${this.state.weatherResult.list[0].weather[0].icon}.png`}></img></p>
         <p className="weather">{this.state.weatherResult.list[0].weather[0].description}</p>
         </div>
       </Col>
@@ -127,7 +126,7 @@ export default class App extends Component {
       <div className="day two">
         <p className="time"> <Moment format="D MMM YYYY" withTitle>{this.state.weatherResult.list[8].dt_txt}</Moment></p>
         <p className="city">{this.state.weatherResult.city.name}</p>
-        <p className="temp">{this.state.weatherResult.list[8].main.temp}°C <img alt ={this.state.weatherResult.list[8].weather[0].description} src={this.state.iconURL}></img></p>
+        <p className="temp">{this.state.weatherResult.list[8].main.temp}°C <img alt ={this.state.weatherResult.list[8].weather[0].description} src={`http://openweathermap.org/img/w/${this.state.weatherResult.list[8].weather[0].icon}.png`}></img></p>
         <p className="weather">{this.state.weatherResult.list[8].weather[0].description}</p>
         </div>
       </Col>
@@ -135,7 +134,7 @@ export default class App extends Component {
       <div className="day three">
         <p className="time"> <Moment format="D MMM YYYY" withTitle>{this.state.weatherResult.list[16].dt_txt}</Moment></p>
         <p className="city">{this.state.weatherResult.city.name}</p>
-        <p className="temp">{this.state.weatherResult.list[16].main.temp}°C <img alt ={this.state.weatherResult.list[16].weather[0].description} src={this.state.iconURL}></img></p>
+        <p className="temp">{this.state.weatherResult.list[16].main.temp}°C <img alt ={this.state.weatherResult.list[16].weather[0].description} src={`http://openweathermap.org/img/w/${this.state.weatherResult.list[16].weather[0].icon}.png`}></img></p>
         <p className="weather">{this.state.weatherResult.list[16].weather[0].description}</p>
         </div>
       </Col>
@@ -143,7 +142,7 @@ export default class App extends Component {
       <div className="day four">
         <p className="time"> <Moment format="D MMM YYYY" withTitle>{this.state.weatherResult.list[24].dt_txt}</Moment></p>
         <p className="city">{this.state.weatherResult.city.name}</p>
-        <p className="temp">{this.state.weatherResult.list[24].main.temp}°C <img alt ={this.state.weatherResult.list[24].weather[0].description} src={this.state.iconURL}></img></p>
+        <p className="temp">{this.state.weatherResult.list[24].main.temp}°C <img alt ={this.state.weatherResult.list[24].weather[0].description} src={`http://openweathermap.org/img/w/${this.state.weatherResult.list[24].weather[0].icon}.png`}></img></p>
         <p className="weather">{this.state.weatherResult.list[24].weather[0].description}</p>
         </div>
       </Col>
@@ -151,7 +150,7 @@ export default class App extends Component {
       <div className="day five">
         <p className="time"> <Moment format="D MMM YYYY" withTitle>{this.state.weatherResult.list[32].dt_txt}</Moment></p>
         <p className="city">{this.state.weatherResult.city.name}</p>
-        <p className="temp">{this.state.weatherResult.list[32].main.temp}°C <img alt ={this.state.weatherResult.list[32].weather[0].description} src={this.state.iconURL}></img></p>
+        <p className="temp">{this.state.weatherResult.list[32].main.temp}°C <img alt ={this.state.weatherResult.list[32].weather[0].description} src={`http://openweathermap.org/img/w/${this.state.weatherResult.list[32].weather[0].icon}.png`}></img></p>
         <p className="weather">{this.state.weatherResult.list[32].weather[0].description}</p>
         </div> 
       </Col>
