@@ -6,10 +6,8 @@ body{
   font-family: fantasy;
 }
 
-
-
 .render{
-  background-image: url(https://wallpapercave.com/wp/5iMtte5.jpg);
+  background-image: url(https://i.imgur.com/Xj2Exyw.jpg);
   background-size: cover;
   display: flex;
   width: 100%;
@@ -19,48 +17,48 @@ body{
 }
 
 .Paris{
-  background-image: url(https://i.imgur.com/t472a70.jpg)!important;
+  background-image: url(https://i.imgur.com/ya0JDIf.jpg)!important;
   background-size: cover;
   transition:1s;
 }
 
 .Berlin{
-  background-image: url(https://imgur.com/uPtAAyT.jpg)!important;
+  background-image: url(https://i.imgur.com/gWyzSCK.jpg)!important;
   background-size: cover;
   transition:1s;
 }
 
 .Tokyo{
-  background-image: url(https://imgur.com/c31kO4w.jpg)!important;
+  background-image: url(https://i.imgur.com/XU8Kcle.jpg)!important;
   background-size: cover;
   transition:1s;
 }
 
 .Rome{
-  background-image: url(https://imgur.com/37mD9AJ.jpg)!important;
+  background-image: url(https://i.imgur.com/gh5AMbI.jpg)!important;
   background-size: cover;
   transition:1s;
 }
 
 .London{
-  background-image: url(https://imgur.com/WAbNC4X.jpg)!important;
+  background-image: url(https://i.imgur.com/soQqcuG.jpg)!important;
   background-size: cover;
   transition:1s;
 }
 
 .Sydney{
-  background-image: url(https://imgur.com/otdA4bd.jpg)!important;
+  background-image: url(https://i.imgur.com/Yhpv9JQ.jpg)!important;
   background-size: cover;
 }
 
 .Bangkok{
-  background-image: url(https://imgur.com/kaYJ0bL.jpg)!important;
+  background-image: url(https://i.imgur.com/Aamfhj1.jpg)!important;
   background-size: cover;
   transition:1s;
 }
 
 .Shanghai{
-  background-image: url(https://i.imgur.com/ZUCgEX4.jpg)!important;
+  background-image: url(https://i.imgur.com/K6G8w0W.jpg)!important;
   background-size: cover;
   transition:1s;
 }

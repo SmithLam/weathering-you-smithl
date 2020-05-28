@@ -27,7 +27,6 @@ export default class App extends Component {
     }
   }
 
-
   getCurrentWeather = async(lon,lat) =>{
     try{
       let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
@@ -53,14 +52,11 @@ export default class App extends Component {
     }
   }
 
-
-
   getLocation  = () => {
     navigator.geolocation.getCurrentPosition((post) => {
       this.getCurrentWeather(post.coords.longitude, post.coords.latitude)
     })
   }
-
 
   componentDidMount(){
     console.log("open the app")
@@ -70,7 +66,6 @@ export default class App extends Component {
   componentDidUpdate(){
     console.log("something is updated")
   }
-
 
   render() {
 
